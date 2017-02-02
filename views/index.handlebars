@@ -1,0 +1,38 @@
+<h1 class="title">Limbert's Burger Shop</h1>
+
+<h3>Burger</h3>
+
+<div class="contentcontainer">
+    <div class="content">
+        <h4>Ordered Burgers</h4>
+        {{#each burgers}}
+            {{#unless this.devoured}}
+                <div class="burgertitle">
+                    <p>{{this.id}}: {{this.burger_name}}</p>
+                </div>
+                <div class="burgerbutton">
+                    <form action="/delete/{{this.id}}" method="POST">
+                        <input type="hidden" name="id" value="{{this.id}}">
+                        <button type="submit">Devour</button>
+                    </form>
+                </div>
+            {{/unless}}
+        {{/each}}
+    </div>
+    <div class="content">
+        <h4>Devoured Burgers</h4>
+        {{#each burgers}}
+            {{#if this.devoured}}
+                <div>
+                    <p>{{this.id}}: {{this.burger_name}}</p>
+                </div>
+            {{/if}}
+        {{/each}}
+    </div>
+</div>
+<div class="entry">
+    <form action="/" method="POST">
+        <textarea type="text" name="burger" id="burgerorder"></textarea><br>
+        <button type="submit">Order</button>
+    </form>
+</div>

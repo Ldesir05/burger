@@ -8,11 +8,12 @@ var connection = mysql.createConnection({
     password: "", //Your password
     database: "burger_db"
 });
-
+//connection function that handles the error and show the id that we connected too.
 connection.connect(function(err) {
     if (err) throw err;
     console.log("connected as id " + connection.threadId);
 });
 
+//exporting the connection to the connection file to use it
+module.exports = connection;
 
-module.exports = connection.js;
